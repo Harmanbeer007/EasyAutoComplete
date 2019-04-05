@@ -54,10 +54,11 @@ here you have to declare four parameter
 
 <-------------------------------------------IN JAVA FILE------------------------------------------------------>
 
-//find the autocompleteview
+	//find the autocompleteview
+	
 	mWikiAutoComplete = (EasyAutoCompleteView) findViewById(R.id.auto_text);
         
-//setup the parser for the response you will get after API hit.
+	//setup the parser for the response you will get after API hit.
 
 	mWikiAutoComplete.setParser(new EasyAutoCompleteView.AutoCompleteResponseParser() {
 
@@ -82,12 +83,13 @@ here you have to declare four parameter
 		//here you return the model with attributes that you need to use when selectin is done by user from auto suggestions.
             }
         });
-        ((EasyAutoCompleteView) findViewById(R.id.auto_text)).setSelectionListener(new 	    	EasyAutoCompleteView.AutoCompleteItemSelectionListener() {
-            @Override
-            public void onItemSelection(Object obj) {
-	    //find the object here that you sent from parser.
-                WikiItem wikiItem = (WikiItem) obj;
-                ((EasyAutoCompleteView) findViewById(R.id.auto_text)).setText(wikiItem.getItem());
-                ((EasyAutoCompleteView) findViewById(R.id.auto_text)).clearFocus();
+        ((EasyAutoCompleteView) findViewById(R.id.auto_text)).setSelectionListener(
+ 		new EasyAutoCompleteView.AutoCompleteItemSelectionListener() {
+        		@Override
+            		public void onItemSelection(Object obj) {
+	    		//find the object here that you sent from parser.
+                	WikiItem wikiItem = (WikiItem) obj;
+                	((EasyAutoCompleteView) findViewById(R.id.auto_text)).setText(wikiItem.getItem());
+                	((EasyAutoCompleteView) findViewById(R.id.auto_text)).clearFocus();
             }
         });
