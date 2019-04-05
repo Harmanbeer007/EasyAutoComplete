@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EasyAutoCompleteView">
+        <attr name="autocompleteUrl" format="string" />
+        <attr name="modelClass" format="string" />
+        <attr name="rowLayout" format="reference" />
+        <attr name="method" format="reference">
+            <enum name="POST" value="0" />
+            <enum name="GET" value="1" />
+        </attr>
+        <attr name="enable_log" format="boolean" />
+        <attr name="autocompleteParam" format="string" />
+    </declare-styleable>
+
+</resources>
