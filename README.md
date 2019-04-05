@@ -16,7 +16,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.Harmanbeer007:EasyAutoComplete:Tag'
+	        implementation 'com.github.Harmanbeer007:EasyAutoComplete:0.0.7'
 	}
 Step 3.Add AutoCompleteView in XML
 	
