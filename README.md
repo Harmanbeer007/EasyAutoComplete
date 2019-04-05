@@ -42,9 +42,52 @@ here you have to declare four parameter
     
     app:autocompleteParam="search" 
     //attribute required by api end point i.e q=red,query=red,search=red etc.
+    
     app:autocompleteUrl="https://en.wikipedia.org/w/api.php?action=opensearch&amp;format=json&amp;" 
     //API end point without search paramter here ,as we already defined it in app:autocompleteParam 
+    
     app:modelClass="harmanbeer007.easylibrary.model.WikiItem"
     //model class for response need that needs to be parsed.
+    
     app:rowLayout="@layout/row_wiki" 
     //layout to be showen
+
+<-------------------------------------------IN JAVA FILE------------------------------------------------------>
+
+//find the autocompleteview
+	mWikiAutoComplete = (EasyAutoCompleteView) findViewById(R.id.auto_text);
+        
+//setup the parser for the response you will get after API hit.
+
+	mWikiAutoComplete.setParser(new EasyAutoCompleteView.AutoCompleteResponseParser() {
+
+            @Override
+            public ArrayList<? extends Object> parseAutoCompleteResponse(
+                    String response) {
+                Log.d("MainActivity", "Response: " + response);
+                ArrayList<WikiItem> models = new ArrayList<WikiItem>();
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    JSONArray array = jsonArray.optJSONArray(1);
+                    if (array != null) {
+                        for (int i = 0; i < array.length(); i++) {
+                            models.add(new WikiItem(array.getString(i)));
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return models;
+		//here you return the model with attributes that you need to use when selectin is done by user from auto suggestions.
+            }
+        });
+        ((EasyAutoCompleteView) findViewById(R.id.auto_text)).setSelectionListener(new 	    	EasyAutoCompleteView.AutoCompleteItemSelectionListener() {
+            @Override
+            public void onItemSelection(Object obj) {
+	    //find the object here that you sent from parser.
+                WikiItem wikiItem = (WikiItem) obj;
+                ((EasyAutoCompleteView) findViewById(R.id.auto_text)).setText(wikiItem.getItem());
+                ((EasyAutoCompleteView) findViewById(R.id.auto_text)).clearFocus();
+            }
+        });
