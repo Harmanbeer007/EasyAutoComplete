@@ -37,3 +37,14 @@ Step 3.Add AutoCompleteView in XML
         app:autocompleteUrl="https://en.wikipedia.org/w/api.php?action=opensearch&amp;format=json&amp;"
         app:modelClass="harmanbeer007.easylibrary.model.WikiItem"
         app:rowLayout="@layout/row_wiki" />
+
+here you have to declare four parameter
+    
+    app:autocompleteParam="search" 
+    //attribute required by api end point i.e q=red,query=red,search=red etc.
+    app:autocompleteUrl="https://en.wikipedia.org/w/api.php?action=opensearch&amp;format=json&amp;" 
+    //API end point without search paramter here ,as we already defined it in app:autocompleteParam 
+    app:modelClass="harmanbeer007.easylibrary.model.WikiItem"
+    //model class for response need that needs to be parsed.
+    app:rowLayout="@layout/row_wiki" 
+    //layout to be showen
