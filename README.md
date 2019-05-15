@@ -93,3 +93,14 @@ here you have to declare four parameter
                 	((EasyAutoCompleteView) findViewById(R.id.auto_text)).clearFocus();
             }
         });
+#Note
+if you are using a non secure domain and targetting android Pie please put this in your res\xml\network_security_config.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">abc.com</domain>
+        <base-config cleartextTrafficPermitted="true"/>
+
+    </domain-config>
+</network-security-config>
