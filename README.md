@@ -97,12 +97,12 @@ here you have to declare four parameter
 if you are using a non secure domain and targetting android Pie you might not get any results,so please use these options
 # Option 1 -
 
-Create file res/xml/network_security_config.xml -
+Create file res/xml/network_security_config.xml -replace abc.com here with your domain without leading http:// 
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<network-security-config>
 	    <domain-config cleartextTrafficPermitted="true">
-		<domain includeSubdomains="true">Your URL(ex: 127.0.0.1)</domain>
+		<domain includeSubdomains="true">abc.com</domain>
 	    </domain-config>
 	</network-security-config>
 	
