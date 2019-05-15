@@ -93,41 +93,42 @@ here you have to declare four parameter
                 	((EasyAutoCompleteView) findViewById(R.id.auto_text)).clearFocus();
             }
         });
-#Note
+# Note
 if you are using a non secure domain and targetting android Pie you might not get any results,so please use these options
-Option 1 -
+# Option 1 -
 
 Create file res/xml/network_security_config.xml -
 
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">Your URL(ex: 127.0.0.1)</domain>
-    </domain-config>
-</network-security-config>
+	<?xml version="1.0" encoding="utf-8"?>
+	<network-security-config>
+	    <domain-config cleartextTrafficPermitted="true">
+		<domain includeSubdomains="true">Your URL(ex: 127.0.0.1)</domain>
+	    </domain-config>
+	</network-security-config>
+	
 AndroidManifest.xml -
 
-<?xml version="1.0" encoding="utf-8"?>
-<manifest ...>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <application
-        ...
-        android:networkSecurityConfig="@xml/network_security_config"
-        ...>
-        ...
-    </application>
-</manifest>
-Option 2 -
+	<?xml version="1.0" encoding="utf-8"?>
+	<manifest ...>
+	    <uses-permission android:name="android.permission.INTERNET" />
+	    <application
+		...
+		android:networkSecurityConfig="@xml/network_security_config"
+		...>
+		...
+	    </application>
+	</manifest>
+# Option 2 -
 
 AndroidManifest.xml -
 
-<?xml version="1.0" encoding="utf-8"?>
-<manifest ...>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <application
-        ...
-        android:usesCleartextTraffic="true"
-        ...>
-        ...
-    </application>
+	<?xml version="1.0" encoding="utf-8"?>
+	<manifest ...>
+	    <uses-permission android:name="android.permission.INTERNET" />
+	    <application
+		...
+		android:usesCleartextTraffic="true"
+		...>
+		...
+	    </application>
 </manifest>
