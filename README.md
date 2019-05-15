@@ -94,13 +94,40 @@ here you have to declare four parameter
             }
         });
 #Note
-if you are using a non secure domain and targetting android Pie please put this in your res\xml\network_security_config.xml
+if you are using a non secure domain and targetting android Pie you might not get any results,so please use these options
+Option 1 -
 
-			<?xml version="1.0" encoding="utf-8"?>
-			<network-security-config>
-			    <domain-config cleartextTrafficPermitted="true">
-				<domain includeSubdomains="true">abc.com</domain>
-				<base-config cleartextTrafficPermitted="true"/>
+Create file res/xml/network_security_config.xml -
 
-			    </domain-config>
-			</network-security-config>
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">Your URL(ex: 127.0.0.1)</domain>
+    </domain-config>
+</network-security-config>
+AndroidManifest.xml -
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        ...
+        android:networkSecurityConfig="@xml/network_security_config"
+        ...>
+        ...
+    </application>
+</manifest>
+Option 2 -
+
+AndroidManifest.xml -
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        ...
+        android:usesCleartextTraffic="true"
+        ...>
+        ...
+    </application>
+</manifest>
